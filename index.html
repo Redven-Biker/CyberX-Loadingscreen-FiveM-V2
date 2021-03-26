@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 </head>
 <body>
-  <audio id="loading" autoplay loop ><source src="https://cloud.xlife.fr/music/loading.mp3" type="audio/mp3"></audio>
+  <audio id="loading" src="assets/music/music.mp3" autoplay="true" hidden="true" loop="true"></audio>
     <div id="main">
     <div id="page-loader">
         <div class="spinner-container">
@@ -143,17 +143,36 @@
                                 </div>
                                 <script type="text/javascript" src="assets/js/script.js"></script>
                                 <script>
-                                  var play = false;
-                                          var vid = document.getElementById("loading");
-                                          vid.volume = 0.3;
-                                          window.addEventListener('keyup', function(e)
-                                          {
-                                              if (e.which == 69){
-                                                  vid.volume = Math.min(vid.volume + 0.1,1);
-                                              } else if(e.which == 65){
-                                                  vid.volume = Math.max(vid.volume - 0.1,0);
-                                              };
-                                          });
-                                  </script>
+                                    var play = false;
+                                            var vid = document.getElementById("loading");
+                                            vid.volume = 0.1;
+                                            window.addEventListener('keyup', function(e)
+                                            {
+                                                if (e.which == 69){
+                                                    vid.volume = Math.min(vid.volume + 0.1,1);
+                                                } else if(e.which == 65){
+                                                    vid.volume = Math.max(vid.volume - 0.1,0);
+                                                };
+                                            });
+                                    
+                                            var audio = document.querySelector('audio');
+                                    
+                                            if (audio) {
+                                    
+                                            window.addEventListener('keydown', function (event) {
+                                    
+                                            var key = event.which || event.keyCode;
+                                    
+                                            if (key === 32) { // spacebar
+                                    
+                                            event.preventDefault();
+                                    
+                                            audio.paused ? audio.play() : audio.pause();
+                                          
+                                        }
+                                    
+                                      });
+                                    }
+                                    </script>
 </body>
 </html>
